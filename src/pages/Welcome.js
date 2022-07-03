@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import Header from "../components/header";
 import { useNavigate } from "react-router-dom";
+import ReactGA from "react-ga4";
 
 function Welcome() {
   var divStyle = {
@@ -14,10 +15,18 @@ function Welcome() {
   const navigate = useNavigate();
 
   const onClickLoginPage = () => {
+    ReactGA.event({
+      category: "Welcome",
+      action: "Login Page Clicked",
+    });
     navigate("/login");
   };
 
   const onClickSignupPage = () => {
+    ReactGA.event({
+      category: "Welcome",
+      action: "Signup Page Clicked",
+    });
     navigate("/signup");
   };
 

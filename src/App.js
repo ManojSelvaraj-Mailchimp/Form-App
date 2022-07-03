@@ -6,8 +6,13 @@ import Welcome from "./pages/Welcome";
 import Install from "./pages/Install";
 import LoginSuccess from "./pages/LoginSuccess";
 import ConnectionSuccess from "./pages/ConnectionSuccess";
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    ReactGA.initialize("G-V5TRW2V091");
+  }, []);
   return (
     <Router>
       <Routes>

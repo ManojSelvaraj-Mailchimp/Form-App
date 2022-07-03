@@ -3,11 +3,27 @@ import { Form } from "react-bootstrap";
 import Header from "../components/header";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { useEffect } from "react";
+import ReactGA from "react-ga4";
 
 function Signup() {
+  var startTime = null;
+
+  useEffect(() => {
+    startTime = Date.now();
+  }, []);
+
+  console.log(startTime);
+
   const navigate = useNavigate();
 
   const onClickSignupPage = () => {
+    var signupTime = Math.floor(Math.abs(Date.now() - startTime) / 1000);
+    ReactGA.event({
+      category: "Signup Time",
+      action: "Time Taken to Complete Signup Form.",
+      value: signupTime,
+    });
     navigate("/install");
   };
 
