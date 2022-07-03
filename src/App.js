@@ -11,7 +11,7 @@ import { useEffect } from "react";
 
 function App() {
   useEffect(() => {
-    ReactGA.initialize("G-V5TRW2V091");
+    ReactGA.initialize("G-MT429FYVMG");
   }, []);
   return (
     <Router>
