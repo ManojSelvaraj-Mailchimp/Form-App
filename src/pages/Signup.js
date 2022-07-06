@@ -10,19 +10,22 @@ function Signup() {
   var startTime = null;
 
   useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: "/signup" });
     startTime = Date.now();
   }, []);
-
-  console.log(startTime);
 
   const navigate = useNavigate();
 
   const onClickSignupPage = () => {
     var signupTime = Math.floor(Math.abs(Date.now() - startTime) / 1000);
     ReactGA.event({
-      category: "Signup Time",
-      action: "Time Taken to Complete Signup Form.",
-      value: signupTime,
+      category: "page_events",
+      action: "signup_time",
+      signup_time: signupTime,
+    });
+    ReactGA.event({
+      category: "page_events",
+      action: "signup_button_clicked_signupPage",
     });
     navigate("/install");
   };

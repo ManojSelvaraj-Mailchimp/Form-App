@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import Header from "../components/header";
 import { useNavigate } from "react-router-dom";
 import ReactGA from "react-ga4";
+import { useEffect } from "react";
 
 function Welcome() {
   var divStyle = {
@@ -14,18 +15,22 @@ function Welcome() {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: "/welcome" });
+  }, []);
+
   const onClickLoginPage = () => {
     ReactGA.event({
-      category: "Welcome",
-      action: "Login Page Clicked",
+      category: "page_events",
+      action: "login_button_clicked_welcomePage",
     });
     navigate("/login");
   };
 
   const onClickSignupPage = () => {
     ReactGA.event({
-      category: "Welcome",
-      action: "Signup Page Clicked",
+      category: "page_events",
+      action: "signup_button_clicked_welcomePage",
     });
     navigate("/signup");
   };

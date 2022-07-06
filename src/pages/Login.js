@@ -3,9 +3,15 @@ import { Form } from "react-bootstrap";
 import Header from "../components/header";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { useEffect } from "react";
+import ReactGA from "react-ga4";
 
 function Login() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: "/login" });
+  }, []);
 
   var divStyle = {
     marginLeft: "37em",
@@ -16,6 +22,10 @@ function Login() {
   };
 
   const onClickLoginPage = () => {
+    ReactGA.event({
+      category: "page_events",
+      action: "login_button_clicked_loginPage",
+    });
     navigate("/loginsuccess");
   };
 
